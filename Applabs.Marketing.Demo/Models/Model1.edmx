@@ -1,0 +1,127 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HarshaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name=" Marketing List">
+          <Key>
+            <PropertyRef Name="Marketing ID" />
+          </Key>
+          <Property Name="Marketing ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marketer Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marketing Start Date" Type="date" Nullable="false" />
+          <Property Name="Case Status" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Marketing End Date" Type="date" Nullable="false" />
+          <Property Name="Current Status" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee Id" />
+          </Key>
+          <Property Name="Employee Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Employee Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Gender" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Contact Number" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Technology" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email ID" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EAD" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Is Internal Employee" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HarshaModelStoreContainer">
+          <EntitySet Name=" Marketing List" EntityType="Self. Marketing List" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HarshaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="C_Marketing_List">
+          <Key>
+            <PropertyRef Name="Marketing_ID" />
+          </Key>
+          <Property Name="Marketing_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marketer_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marketing_Start_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Case_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Marketing_End_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Current_Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="Employee_Id" />
+          </Key>
+          <Property Name="Employee_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Employee_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Contact_Number" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Technology" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email_ID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="EAD" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Is_Internal_Employee" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="HarshaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C_Marketing_List" EntityType="Self.C_Marketing_List" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HarshaModelStoreContainer" CdmEntityContainer="HarshaEntities">
+          <EntitySetMapping Name="C_Marketing_List">
+            <EntityTypeMapping TypeName="HarshaModel.C_Marketing_List">
+              <MappingFragment StoreEntitySet=" Marketing List">
+                <ScalarProperty Name="Marketing_ID" ColumnName="Marketing ID" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee Name" />
+                <ScalarProperty Name="Marketer_Name" ColumnName="Marketer Name" />
+                <ScalarProperty Name="Marketing_Start_Date" ColumnName="Marketing Start Date" />
+                <ScalarProperty Name="Case_Status" ColumnName="Case Status" />
+                <ScalarProperty Name="Marketing_End_Date" ColumnName="Marketing End Date" />
+                <ScalarProperty Name="Current_Status" ColumnName="Current Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="HarshaModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="Employee_Id" ColumnName="Employee Id" />
+                <ScalarProperty Name="Employee_Name" ColumnName="Employee Name" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Contact_Number" ColumnName="Contact Number" />
+                <ScalarProperty Name="Technology" ColumnName="Technology" />
+                <ScalarProperty Name="Email_ID" ColumnName="Email ID" />
+                <ScalarProperty Name="EAD" ColumnName="EAD" />
+                <ScalarProperty Name="Is_Internal_Employee" ColumnName="Is Internal Employee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
